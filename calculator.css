@@ -1,0 +1,24 @@
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container {
+    margin: auto;
+    border: 5px double rgb(155, 200, 225);
+    width: 550px;
+    height: 550px;
+}
+
+@media (max-width: 850px) {
+    .container {
+        width: 80%;
+    }
+}
