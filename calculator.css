@@ -1,13 +1,20 @@
 
+
+  @import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap');
+
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Shantell Sans', cursive;
+   
 }
 
 h1 {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
+    font-family: 'Tilt Prism', cursive;
 }
 
 .container {
