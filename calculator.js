@@ -33,6 +33,7 @@ const handleModalWindow = () => {
     inputFirstName.type = "text";
     inputFirstName.name = "firstName";
     inputFirstName.id = "firstName";
+    inputFirstName.required = true;
     getModalWindow.appendChild(inputFirstName);
 
     // Création input Nom et paragraphe
@@ -44,26 +45,54 @@ const handleModalWindow = () => {
     inputName.type = "text";
     inputName.name = "lastName";
     inputName.id = "lastName";
+    inputName.required = true;
     getModalWindow.appendChild(inputName);
 }
 
-const listenInput = () => {
+// Écouter les événements
+const listenInput = (el) => {
     const inputFirstName = document.querySelector("#firstName");
+    const inputLastName = document.querySelector("#lastName");
+
+    let firstName = "";
+    let lastName = "";
+
+    // Écouter le changement de Prénom
     inputFirstName.addEventListener("change", (e) => {
         e.preventDefault()
-        console.log(inputFirstName.value);
+        firstName = inputFirstName.value;
+        console.log(firstName);
     });
 
-    const inputLastName = document.querySelector("#lastName");
+    // Écouter le changement de Prénom
     inputLastName.addEventListener("change", (e) => {
         e.preventDefault()
-        console.log(inputLastName.value);
+        lastName = inputLastName.value;
+        console.log(lastName);
+        handleSalutation(firstName, lastName);
     });
+    
 }
 
+ // fonction pour la salutation
+function handleSalutation(firstName, lastName) {
+    console.log(firstName, lastName);
+    console.log(typeof(firstName), typeof(lastName));
+    const salutation = document.querySelector(".salutation");
+
+    // Condition pour afficher le mot de bienvenue
+    if (firstName !== "" && firstName !== undefined 
+        && lastName !== "" && lastName !== undefined ) {
+        salutation.innerText = "Bienvenue " + `${firstName} ` + `${lastName}`;
+        const getModalWindow = document.querySelector(".modal-window");
+        getModalWindow.classList.add("hidden");
+    }
+} 
 
 function init() {
     createElements();
     handleModalWindow();
     listenInput();
+
+   
 }
