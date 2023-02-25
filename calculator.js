@@ -20,7 +20,7 @@ const createElements = () => {
 }
 
 // Composition de la fenêtre modale
-const handleModalWindow = (el) => {
+const handleModalWindow = () => {
     const getModalWindow = document.querySelector(".modal-window");
 
 
@@ -32,6 +32,7 @@ const handleModalWindow = (el) => {
     const inputFirstName = document.createElement("input");
     inputFirstName.type = "text";
     inputFirstName.name = "firstName";
+    inputFirstName.id = "firstName";
     getModalWindow.appendChild(inputFirstName);
 
     // Création input Nom et paragraphe
@@ -42,12 +43,27 @@ const handleModalWindow = (el) => {
     const inputName = document.createElement("input");
     inputName.type = "text";
     inputName.name = "lastName";
+    inputName.id = "lastName";
     getModalWindow.appendChild(inputName);
-
-    // console.log(inputFirstName.value, inputName.value);
 }
+
+const listenInput = () => {
+    const inputFirstName = document.querySelector("#firstName");
+    inputFirstName.addEventListener("change", (e) => {
+        e.preventDefault()
+        console.log(inputFirstName.value);
+    });
+
+    const inputLastName = document.querySelector("#lastName");
+    inputLastName.addEventListener("change", (e) => {
+        e.preventDefault()
+        console.log(inputLastName.value);
+    });
+}
+
 
 function init() {
     createElements();
     handleModalWindow();
+    listenInput();
 }
