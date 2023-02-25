@@ -26,6 +26,7 @@ h1 {
 
 .container {
     display: flex;
+    flex-direction: column;
     margin: auto;
     border: 5px double rgb(155, 200, 225);
     width: 550px;
@@ -58,6 +59,13 @@ input {
 .hidden {
     visibility: hidden;
 }
+
+.salutation {
+    text-align: center;
+    text-shadow: rgb(203, 173, 173) 1px 2px 1px;
+    font-weight: 600;
+}
+
 
 @media (max-width: 850px) {
     .container {
