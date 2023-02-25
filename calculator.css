@@ -17,15 +17,38 @@ h1 {
     font-family: 'Tilt Prism', cursive;
 }
 
+.global {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+}
+
 .container {
+    display: flex;
     margin: auto;
     border: 5px double rgb(155, 200, 225);
     width: 550px;
     height: 550px;
 }
 
+.modal-window {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+}
+
+input {
+    width: 70%;
+    height: auto;
+}
 @media (max-width: 850px) {
     .container {
         width: 80%;
+    }
+
+    h1 {
+        font-size: 1.5em;
     }
 }
