@@ -1,7 +1,7 @@
 
 const container = document.querySelector(".container");
 
-
+/* ============= Fonction pour la création des blocs principaux ==================  */
 const createElements = () => {
     // Création de div pour la salutation
     const divSalutation = document.createElement("div");
@@ -19,10 +19,9 @@ const createElements = () => {
     container.appendChild(modalWindow); 
 }
 
-// Composition de la fenêtre modale
+/* ======= Fonction pour la création des éléments de la fenêtre modale ==================== */
 const handleModalWindow = () => {
     const getModalWindow = document.querySelector(".modal-window");
-
 
     // Création input Prénom et paragraphe
     const paraFirstName = document.createElement("p");
@@ -47,9 +46,17 @@ const handleModalWindow = () => {
     inputName.id = "lastName";
     inputName.required = true;
     getModalWindow.appendChild(inputName);
+
+    // Création d'un bouton
+    const btnOk = document.createElement("button");
+    btnOk.type = 'submit';
+    btnOk.name = 'formBtn';
+    btnOk.innerHTML = "Validé";
+    btnOk.classList.add("hover");
+    getModalWindow.appendChild(btnOk);
 }
 
-// Écouter les événements
+/*=================== Écouter les événements ====================*/
 const listenInput = (el) => {
     const inputFirstName = document.querySelector("#firstName");
     const inputLastName = document.querySelector("#lastName");
@@ -59,40 +66,45 @@ const listenInput = (el) => {
 
     // Écouter le changement de Prénom
     inputFirstName.addEventListener("change", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         firstName = inputFirstName.value;
-        console.log(firstName);
     });
 
     // Écouter le changement de Prénom
     inputLastName.addEventListener("change", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         lastName = inputLastName.value;
-        console.log(lastName);
+
+        // Appel fonction
         handleSalutation(firstName, lastName);
     });
     
 }
 
- // fonction pour la salutation
+ /*==================== fonction pour la salutation ====================== */
 function handleSalutation(firstName, lastName) {
-    console.log(firstName, lastName);
-    console.log(typeof(firstName), typeof(lastName));
+   
     const salutation = document.querySelector(".salutation");
 
-    // Condition pour afficher le mot de bienvenue
-    if (firstName !== "" && firstName !== undefined 
+    // Récupération du bouton de la modale
+    const btnValid = document.querySelector(".modal-window button");
+
+    // Écoute du bouton de la modale d'identification
+    btnValid.addEventListener("click", (e)=> {
+        e.preventDefault();
+        // Condition pour afficher le mot de bienvenue
+        if (firstName !== "" && firstName !== undefined 
         && lastName !== "" && lastName !== undefined ) {
         salutation.innerText = "Bienvenue " + `${firstName} ` + `${lastName}`;
         const getModalWindow = document.querySelector(".modal-window");
         getModalWindow.classList.add("hidden");
-    }
+        }
+    })
 } 
 
+/* ############# Appels fonctions #################################### */
 function init() {
     createElements();
     handleModalWindow();
     listenInput();
-
-   
 }
